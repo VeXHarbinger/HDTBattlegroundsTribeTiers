@@ -1,0 +1,49 @@
+﻿<UserControl
+    x:Class="HDTBattlegroundsTribeTiers.Controls.RaceDisplayControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:HDTBattlegroundsTribeTiers.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hdt="clr-namespace:Hearthstone_Deck_Tracker;assembly=HearthstoneDeckTracker"
+    xmlns:hdtc="clr-namespace:Hearthstone_Deck_Tracker.Controls;assembly=HearthstoneDeckTracker"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="clr-namespace:Hearthstone_Deck_Tracker.Utility.Themes;assembly=HearthstoneDeckTracker"
+    HorizontalContentAlignment="Stretch"
+    VerticalContentAlignment="Center"
+    d:DesignHeight="200"
+    d:DesignWidth="190"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="HDTBattlegroundsTribeTiers"
+    lex:ResxLocalizationProvider.DefaultDictionary="LocalizeTools"
+    Background="Transparent"
+    Grid.IsSharedSizeScope="True"
+    ScrollViewer.CanContentScroll="True"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="DisplayGrid"
+        Grid.Column="0"
+        Grid.IsSharedSizeScope="True"
+        ScrollViewer.CanContentScroll="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border>
+            <StackPanel>
+                <Border
+                    Background="#1d3657"
+                    BorderBrush="#141617"
+                    BorderThickness="0,0,0,1">
+                    <hdt:HearthstoneTextBlock
+                        Name="RaceGroup"
+                        Margin="5,2"
+                        FontSize="12"
+                        Text="Race"
+                        UseLayoutRounding="True"
+                        Visibility="Visible" />
+                </Border>
+                <StackPanel x:Name="RaceViewer" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
