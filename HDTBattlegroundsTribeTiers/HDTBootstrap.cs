@@ -1,4 +1,5 @@
 ﻿using HDTBattlegroundsTribeTiers.Controls;
+using HDTBattlegroundsTribeTiers.Logic;
 using HDTBattlegroundsTribeTiers.Properties;
 using Hearthstone_Deck_Tracker.Plugins;
 using System;
@@ -66,6 +67,7 @@ namespace HDTBattlegroundsTribeTiers
         public void OnLoad()
         {
             PluginTemplateInstance = new HDTBattlegroundsTribeTiers();
+           
             AddMenuItem();
         }
 

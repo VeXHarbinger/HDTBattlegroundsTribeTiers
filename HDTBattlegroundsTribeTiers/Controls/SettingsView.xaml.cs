@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using HDTBattlegroundsTribeTiers.Logic;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace HDTBattlegroundsTribeTiers.Controls
     public partial class SettingsView : ScrollViewer
     {
         public static bool IsUnlocked { get; private set; }
+
+        public InputMoveManager inputMoveManager;
 
         private static Flyout _flyout;
 
@@ -53,28 +56,30 @@ namespace HDTBattlegroundsTribeTiers.Controls
 
         private void BtnShowHide_Click(object sender, RoutedEventArgs e)
         {
-            RacesDisplayControl poolView = Core.OverlayCanvas.FindChild<RacesDisplayControl>("RacesDisplayControlView");
-            if (poolView != null)
+            RacesDisplayControl racesViewer = Core.OverlayCanvas.FindChild<RacesDisplayControl>(panelName);
+            if (racesViewer != null)
             {
-                bool IsVis = (poolView.Visibility == Visibility.Visible);
-                BtnShowHide.Content = IsVis ? LocalizeTools.GetLocalized("HideLabel") : LocalizeTools.GetLocalized("ShowLabel");
-                poolView.Visibility = IsVis ? Visibility.Collapsed : Visibility.Visible;
+                inputMoveManager = new InputMoveManager(racesViewer);
+                bool IsVis = (racesViewer.Visibility == Visibility.Visible);
+                BtnShowHide.Content = IsVis ? LocalizeTools.GetLocalized("LabelHide") : LocalizeTools.GetLocalized("LabelShow");
+                racesViewer.Visibility = IsVis ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
         private void BtnUnlock_Click(object sender, RoutedEventArgs e)
         {
-            RacesDisplayControl poolView = Core.OverlayCanvas.FindChild<RacesDisplayControl>("RacesDisplayControlView");
-            if (poolView != null)
+            RacesDisplayControl racesViewer = Core.OverlayCanvas.FindChild<RacesDisplayControl>(panelName);
+            if (racesViewer != null)
             {
-                IsUnlocked = HDTBattlegroundsTribeTiers.inputMoveManager.Toggle();
+                inputMoveManager = new InputMoveManager(racesViewer);
+                IsUnlocked = inputMoveManager.Toggle();
                 BtnShowHide.IsEnabled = !IsUnlocked;
                 BtnUnlock.Content = IsUnlocked ? LocalizeTools.GetLocalized("LockLabel") : BtnUnlock.Content = LocalizeTools.GetLocalized("UnlockLabel");
 
-                if (IsUnlocked && (poolView.Visibility != Visibility.Visible))
+                if (IsUnlocked && (racesViewer.Visibility != Visibility.Visible))
                 {
-                    poolView.Visibility = Visibility.Visible;
-                    BtnShowHide.Content = LocalizeTools.GetLocalized("HideLabel");
+                    racesViewer.Visibility = Visibility.Visible;
+                    BtnShowHide.Content = LocalizeTools.GetLocalized("LabelHide");
                 }
             }
         }

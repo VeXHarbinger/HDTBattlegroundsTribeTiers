@@ -16,7 +16,7 @@ namespace HDTBattlegroundsTribeTiers
     public class HDTBattlegroundsTribeTiers : IDisposable
     {
         public TribalCouncil tribalCouncil;
-        public static InputMoveManager inputMoveManager;
+        public InputMoveManager inputMoveManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HDTBattlegroundsTribeTiers"/> class.
@@ -62,8 +62,9 @@ namespace HDTBattlegroundsTribeTiers
 
         public void Dispose()
         {
-            CleanUp();
             inputMoveManager.Dispose();
+            CleanUp();               
+  
         }
     }
 }

@@ -7,6 +7,7 @@ using Hearthstone_Deck_Tracker.Hearthstone;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -21,9 +22,9 @@ namespace HDTBattlegroundsTribeTiers.Controls
 
         private BattlegroundsSessionViewModel bsvm;
 
-        private static string panelName = "TribalCouncilView";
+        public static string panelName = "TribalCouncilView";
 
-        public static InputMoveManager inputMoveManager;
+        
 
         public RacesDisplayControl RacesDisplay;
 
@@ -44,7 +45,7 @@ namespace HDTBattlegroundsTribeTiers.Controls
         {
             if (RacesDisplay is not null)
             {
-                RacesDisplay.Visibility = System.Windows.Visibility.Collapsed;
+               // RacesDisplay.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 
@@ -83,18 +84,19 @@ namespace HDTBattlegroundsTribeTiers.Controls
                 Canvas.SetTop(RacesDisplay, Settings.Default.Top);
                 Canvas.SetRight(RacesDisplay, Settings.Default.Right);
 
-                inputMoveManager = new InputMoveManager(RacesDisplay);
+               
 
                 // Just for testing
                 GameEvents.OnPlayerHandMouseOver.Add(PlayerHandMouseOver);
                 GameEvents.OnMouseOverOff.Add(OnMouseOff);
             }
 
-            // bsvm = Core.Game.BattlegroundsSessionViewModel;
+
         }
 
         public void LoadTiers(List<int> AvailableTiers, HashSet<Race> AvailableRaces)
         {
+
             foreach (Race r in AvailableRaces)
             {
                 RaceDisplayControl RaceDisplay = new RaceDisplayControl();

@@ -49,7 +49,7 @@ namespace HDTBattlegroundsTribeTiers.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public double Top {
             get {
                 return ((double)(this["Top"]));
@@ -61,7 +61,7 @@ namespace HDTBattlegroundsTribeTiers.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public double Right {
             get {
                 return ((double)(this["Right"]));
